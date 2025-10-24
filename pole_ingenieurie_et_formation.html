@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme du Pôle Ingénierie & Actions de Formation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* light background */
+        }
+
+        /* Palette FORCOS - Bleu Vibrant & Vert (pour la formation) */
+        .color-forcos-primary { color: #00A6FB; }
+        .bg-forcos-primary { background-color: #00A6FB; }
+        .bg-forcos-secondary { background-color: #0582CA; }
+        .bg-training-green { background-color: #4CAF50; }
+        .border-training-green { border-color: #4CAF50; }
+        .text-training-green { color: #388E3C; }
+
+        .si-box {
+            @apply p-4 rounded-lg shadow-lg text-center h-full flex flex-col justify-between transition transform hover:scale-[1.02] duration-300;
+        }
+
+        /* Styles pour les lignes de connexion simples (verticales) */
+        .line-vertical {
+            width: 4px;
+            background-color: #0582CA;
+            @apply my-4 mx-auto;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-10">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold color-forcos-secondary mb-2">
+                Pôle Ingénierie & Actions de Formation
+            </h1>
+            <p class="text-lg text-gray-500">
+                Démarche structurée pour intégrer la formation à la stratégie des entités.
+            </p>
+        </header>
+
+        <!-- Niveau 1: Le Pôle Central -->
+        <div class="flex justify-center">
+            <div class="si-box bg-training-green text-white w-full max-w-md">
+                <h2 class="text-2xl font-bold">Ingénierie & Actions de Formation</h2>
+                <p class="text-sm mt-1 opacity-90">Analyse, conception, réalisation et suivi.</p>
+            </div>
+        </div>
+
+        <!-- Ligne de connexion vers les 2 domaines -->
+        <div class="line-vertical h-12"></div>
+
+        <!-- Niveau 2: Les 2 Composantes Majeures -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Composante 1. Ingénierie de Formation (Méthode) -->
+            <div class="flex flex-col items-center">
+                <div class="si-box bg-white border-b-4 border-forcos-primary text-gray-800 w-full">
+                    <h3 class="text-xl font-bold color-forcos-primary mb-3">1. Ingénierie de Formation</h3>
+                    <p class="text-sm italic text-gray-600 mb-4">Définir et construire un système de formation clair, pragmatique et performant.</p>
+                    <ul class="text-sm list-disc list-inside p-0 space-y-1 text-left mx-auto max-w-xs">
+                        <li>Analyse préalable des besoins</li>
+                        <li>Conception de plans d'action</li>
+                        <li>Élaboration du système de formation</li>
+                        <li>Suivi et évaluations rigoureuses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Composante 2. Actions de Formation (Domaines) -->
+            <div class="flex flex-col items-center">
+                <div class="si-box bg-white border-b-4 border-training-green text-gray-800 w-full">
+                    <h3 class="text-xl font-bold text-training-green mb-3">2. Actions de Formation (Domaines)</h3>
+                    <p class="text-sm italic text-gray-600 mb-4">Large gamme de domaines pour le partage de connaissances et l'apport de solutions opérationnelles.</p>
+                    <div class="grid grid-cols-2 gap-2 text-left mx-auto">
+                        <ul class="text-sm list-none p-0 space-y-1">
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Informatique</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Management / Gestion</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Comptabilité & Finance</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Ressources Humaines</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Logistique</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Qualité</li>
+                        </ul>
+                        <ul class="text-sm list-none p-0 space-y-1">
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Marketing & Ventes</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Communication</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Droit et Fiscalité</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Langues</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Secrétariat</li>
+                            <li><span class="text-training-green font-semibold">&#x25AA;</span> Techniques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-200">
+            <p class="text-xs text-gray-400">Diagramme basé sur la documentation de FORCOS SARL - Réalisé sans SVG ni Mermaid JS.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
