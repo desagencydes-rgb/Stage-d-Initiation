@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigramme de FORCOS SARL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Couleurs thématiques FORCOS */
+        .color-primary { color: #00A6FB; }
+        .color-secondary { color: #0582CA; }
+        .color-dark { color: #003554; }
+        .bg-dark { background-color: #003554; }
+        .border-primary { border-color: #00A6FB; }
+        .border-secondary { border-color: #0582CA; }
+
+        /* Style des nœuds */
+        .org-node {
+            padding: 1.5rem 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            font-weight: 600;
+            line-height: 1.4;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.2s;
+            z-index: 10; /* Assure que le noeud est au-dessus des lignes */
+        }
+        
+        .org-node:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Composant de ligne Verticale (Utilisé pour connecter les niveaux) */
+        .connector-v {
+            @apply w-1 h-8 mx-auto bg-forcos-secondary;
+            /* Ligne visible pour tous les écrans, simulant la connexion */
+        }
+
+        /* Lignes de connexion Horizontale pour Desktop */
+        @media (min-width: 769px) {
+            .horizontal-line {
+                /* Conteneur pour la ligne horizontale, centré entre les pôles */
+                @apply relative w-full h-1 my-4 bg-forcos-secondary;
+            }
+            .vertical-branch {
+                /* Petites branches verticales vers les pôles sur la ligne horizontale */
+                @apply absolute w-1 h-3 bg-forcos-secondary;
+                bottom: -3px; /* Positionnement au bas de la ligne horizontale */
+            }
+            /* Positionnement des branches verticales sous la ligne horizontale */
+            .branch-tech { left: 16.66%; transform: translateX(-50%); } /* 1/6 du chemin */
+            .branch-admin { left: 50%; transform: translateX(-50%); } /* 1/2 du chemin */
+            .branch-support { left: 83.33%; transform: translateX(-50%); } /* 5/6 du chemin */
+
+        }
+
+        /* Adaptation pour le mobile */
+        @media (max-width: 768px) {
+            .org-level-container {
+                @apply flex flex-col space-y-4; /* Empilement des pôles */
+            }
+            .org-node {
+                @apply w-full;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forcos-primary': '#00A6FB',
+                        'forcos-secondary': '#0582CA',
+                        'forcos-accent': '#006494',
+                        'forcos-dark': '#003554',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-forcos-text min-h-screen p-6 md:p-12">
+
+    <!-- En-tête -->
+    <header class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl font-extrabold color-dark mb-2">Organigramme Hiérarchique de FORCOS SARL</h1>
+        <p class="text-xl text-slate-600 max-w-4xl mx-auto">
+            Structure plate et fonctionnelle assurant une réactivité et une coordination claires des responsabilités.
+        </p>
+    </header>
+
+    <!-- Conteneur principal de l'organigramme -->
+    <div class="max-w-6xl mx-auto py-8 bg-white rounded-lg shadow-2xl">
+        
+        <!-- Niveau 1 : Direction Générale -->
+        <div class="flex justify-center">
+            <div class="org-node bg-forcos-dark text-white text-xl font-bold border-4 border-forcos-primary">
+                Direction Générale
+                <span class="text-sm font-normal mt-1">(Supervision, Stratégie, Fiscalité)</span>
+            </div>
+        </div>
+
+        <!-- Connecteur Vertical Principal -->
+        <div class="connector-v"></div>
+
+        <!-- Ligne Horizontale de Connexion (Desktop uniquement) -->
+        <div class="hidden md:block horizontal-line">
+            <div class="vertical-branch branch-tech"></div>
+            <div class="vertical-branch branch-admin"></div>
+            <div class="vertical-branch branch-support"></div>
+        </div>
+        
+        <!-- Niveau 2 : Pôles Fonctionnels -->
+        <div class="org-level-container flex justify-center md:flex-row md:space-x-6 mx-4">
+
+            <!-- Pôle Technique -->
+            <div class="flex flex-col items-center flex-1">
+                <div class="connector-v block md:hidden"></div> <!-- Mobile Connector -->
+                <div class="connector-v hidden md:block h-3"></div> <!-- Desktop Connector -->
+                <div class="org-node bg-forcos-secondary text-white w-full">
+                    <span class="text-lg">Pôle Technique / Développement</span>
+                    <span class="text-xs font-normal mt-1">
+                        **Stack :** React/Electron (Front), Flask/Python (Back)
+                    </span>
+                    <span class="text-sm font-normal mt-1">
+                        (Choix technologiques, Codage)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pôle Administratif/RH -->
+            <div class="flex flex-col items-center flex-1">
+                <div class="connector-v block md:hidden"></div> <!-- Mobile Connector -->
+                <div class="connector-v hidden md:block h-3"></div> <!-- Desktop Connector -->
+                <div class="org-node bg-forcos-secondary text-white w-full">
+                    <span class="text-lg">Pôle Administratif / RH / Paie</span>
+                    <span class="text-sm font-normal mt-1">
+                        (Gestion RH, Calcul Paies, Déclarations CNSS/TVA)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pôle Support & Maintenance -->
+            <div class="flex flex-col items-center flex-1">
+                <div class="connector-v block md:hidden"></div> <!-- Mobile Connector -->
+                <div class="connector-v hidden md:block h-3"></div> <!-- Desktop Connector -->
+                <div class="org-node bg-forcos-secondary text-white w-full">
+                    <span class="text-lg">Support & Maintenance</span>
+                    <span class="text-sm font-normal mt-1">
+                        (Déploiement, Mises à jour, Assistance Clients)
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <footer class="text-center mt-12 pt-8 border-t border-slate-200">
+        <p class="text-sm text-slate-500">
+            Organigramme basé sur la répartition des rôles observée lors du stage.
+        </p>
+        <p class="text-xs text-slate-400 mt-1">Conçu sans SVG ni Mermaid JS. Tous les éléments visuels sont générés avec HTML/CSS.</p>
+    </footer>
+</body>
+</html>

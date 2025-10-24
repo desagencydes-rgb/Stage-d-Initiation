@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographie: Parcours Détaillé du Stage d'Initiation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Définition de la grille pour le flux principal */
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .flow-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Style des nœuds du diagramme */
+        .flow-node {
+            background-color: #003554; /* forcos-dark */
+            color: white;
+            padding: 1.25rem 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            line-height: 1.4;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-center: center;
+        }
+        
+        /* Flèche de base (verticale sur mobile, à remplacer par CSS pur sur desktop) */
+        .arrow-vertical {
+            font-size: 2.5rem;
+            color: #00A6FB; /* forcos-primary */
+            margin: 0.5rem 0;
+            font-weight: 800;
+        }
+
+        /* Couleurs personnalisées pour Tailwind */
+        .color-forcos-primary { color: #00A6FB; }
+        .color-forcos-secondary { color: #0582CA; }
+        .color-forcos-accent { color: #006494; }
+        .color-forcos-dark { color: #003554; }
+        .bg-forcos-dark { background-color: #003554; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forcos-primary': '#00A6FB',
+                        'forcos-secondary': '#0582CA',
+                        'forcos-accent': '#006494',
+                        'forcos-dark': '#003554',
+                        'forcos-text': '#051923',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-forcos-text flex items-center justify-center min-h-screen p-4">
+
+    <div class="container mx-auto max-w-7xl bg-white rounded-lg shadow-2xl p-6 md:p-10">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold color-forcos-dark mb-2">Parcours Détaillé du Stage</h1>
+            <p class="text-xl color-forcos-secondary max-w-4xl mx-auto">
+                De la fondation théorique à la résolution architecturale d'un projet technique d'authentification.
+            </p>
+        </header>
+
+        <main>
+            <p class="mb-12 text-center text-lg max-w-5xl mx-auto text-slate-700">
+                Le stage a été structuré autour d'un cycle complet : acquisition des connaissances fondamentales (législation, RH, IA), suivi par les phases d'ingénierie logicielle (conception et modélisation) et une phase de développement itérative, essentielle pour identifier les limites des solutions internes et justifier le choix d'une architecture externe.
+            </p>
+            
+            <!-- Début du diagramme -->
+            <div class="flow-grid lg:gap-x-12">
+                
+                <!-- Colonne 1 : Fondations -->
+                <div class="flex flex-col items-center w-full lg:col-span-1">
+                    <div class="flow-node bg-forcos-primary text-xl font-black">Début du Stage</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node">Recherche & Étude Initiale</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-secondary">Étude du Fonctionnement de l'Entreprise</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-secondary">Étude de la Législation & Gestion de la Paie</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-secondary">Analyse des Besoins & Contraintes (RH/Paie)</div>
+                    <div class="arrow-vertical hidden lg:block">↓</div>
+                </div>
+
+                <!-- Colonne 2 : Conception et Ingénierie (avec lien vers la C3) -->
+                <div class="flex flex-col items-center w-full lg:col-span-1">
+                    <div class="flow-node bg-forcos-accent">Apprentissage Autonome en Ingénierie Logicielle</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-accent">Conception des Modèles Conceptuels & Organisationnels</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-accent">Rédaction du Plan Général du Projet (Accurency)</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-accent">Conception des Maquettes UI/UX</div>
+                    <div class="arrow-vertical hidden lg:block">↓</div>
+                </div>
+                
+                <!-- Colonne 3 : Développement Itératif & Découverte des Problèmes -->
+                <div class="flex flex-col items-center w-full lg:col-span-1">
+                    <div class="flow-node bg-gray-600">Développement du Système Caméra "Maison" (V1)</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-gray-600">Tests, Validations & Identification des Conflits</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-red-700">Analyse Détaillée des Contraintes & Problèmes Techniques (IA, Latence)</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-secondary">Recherche & Étude Approfondie (Solutions Exogènes)</div>
+                    <div class="arrow-vertical hidden lg:block">↓</div>
+                </div>
+
+                <!-- Colonne 4 : Architecture Finale & Conclusion -->
+                <div class="flex flex-col items-center w-full lg:col-span-1">
+                    <div class="flow-node bg-yellow-600">Conception du Plan de Redémarrage : Solution API Externe (Matériel & Logiciel)</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-yellow-600">Modélisation & Conception Complète de l'Intégration (Mon Rôle Final)</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-primary font-black">Conclusion & Planification pour une Future Correction</div>
+                    <div class="arrow-vertical">↓</div>
+                    <div class="flow-node bg-forcos-dark text-xl font-black">Fin du Stage</div>
+                </div>
+
+            </div>
+            <!-- Fin du diagramme -->
+
+        </main>
+        
+        <footer class="text-center mt-12 pt-8 border-t border-slate-200">
+            <p class="text-sm text-slate-500">
+                Ce diagramme de flux illustre le passage de l'apprentissage théorique (Chapitre II) à l'expérimentation et la justification de l'architecture finale (Chapitre III).
+            </p>
+            <p class="text-xs text-slate-400 mt-1">Conçue sans SVG ni Mermaid JS. Tous les éléments visuels sont générés avec HTML/CSS.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

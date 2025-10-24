@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographie: Découverte de FORCOS SARL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .flow-arrow {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .flow-item:not(:last-child)::after {
+                content: '→';
+                font-size: 2rem;
+                color: #0582CA;
+                margin-left: 0.75rem;
+                margin-right: 0.75rem;
+                align-self: center;
+            }
+            .flow-arrow {
+                display: block;
+                font-size: 2rem;
+                color: #0582CA;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forcos-primary': '#00A6FB',
+                        'forcos-secondary': '#0582CA',
+                        'forcos-accent': '#006494',
+                        'forcos-dark': '#003554',
+                        'forcos-text': '#051923',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-forcos-text">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-forcos-dark mb-2">Découverte de FORCOS SARL</h1>
+            <p class="text-xl text-forcos-secondary">Une infographie sur l'identité, la structure et les processus du cabinet</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div class="bg-white rounded-lg shadow-xl p-6 flex flex-col items-center justify-center text-center h-48">
+                <span class="text-5xl mb-2" role="img" aria-label="Calendrier">📅</span>
+                <h3 class="text-3xl font-bold text-forcos-primary">Depuis 2008</h3>
+                <p class="text-lg text-forcos-dark">Date de Création</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl p-6 flex flex-col items-center justify-center text-center h-48">
+                <span class="text-5xl mb-2" role="img" aria-label="Bourse d'argent">💰</span>
+                <h3 class="text-3xl font-bold text-forcos-primary">150 000 MAD</h3>
+                <p class="text-lg text-forcos-dark">Capital Social</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl p-6 flex flex-col items-center justify-center text-center h-48">
+                <span class="text-5xl mb-2" role="img" aria-label="Groupe de personnes">👥</span>
+                <h3 class="text-3xl font-bold text-forcos-primary">&lt; 10 Employés</h3>
+                <p class="text-lg text-forcos-dark">Effectif (TPE/PME)</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl p-6 md:col-span-2">
+                <h2 class="text-2xl font-bold text-forcos-dark mb-2">Les Pôles d'Expertise</h2>
+                <p class="text-forcos-text mb-4">FORCOS articule ses services autour de quatre domaines de compétences principaux, offrant une expertise transversale du conseil stratégique à l'implémentation technique.</p>
+                <div class="chart-container">
+                    <canvas id="polesChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl p-6">
+                <h2 class="text-2xl font-bold text-forcos-dark mb-2">Stack Technologique</h2>
+                <p class="text-forcos-text mb-4">L'entreprise s'appuie sur des technologies modernes et des méthodes agiles pour développer ses solutions logicielles sur mesure.</p>
+                <div class="chart-container">
+                    <canvas id="techChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-xl p-6 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-forcos-dark mb-4 text-center">Organisation Interne Fonctionnelle</h2>
+                <p class="text-forcos-text mb-6 text-center max-w-3xl mx-auto">Avec un effectif réduit, FORCOS adopte une structure plate favorisant la polyvalence et la communication directe entre les pôles.</p>
+                
+                <div class="flex flex-col items-center">
+                    <div class="bg-forcos-dark text-white py-3 px-6 rounded-lg shadow-md font-bold text-lg">
+                        Direction Générale
+                    </div>
+                    
+                    <div class="w-px h-8 bg-forcos-secondary my-2"></div>
+                    
+                    <div class="w-full max-w-4xl flex flex-col md:flex-row justify-around gap-4">
+                        <div class="border-2 border-forcos-secondary border-dashed rounded-lg p-4 text-center flex-1">
+                            <h4 class="font-bold text-forcos-secondary text-lg mb-1">Pôle Technique</h4>
+                            <p class="text-sm">Développement, Architecture</p>
+                        </div>
+                        <div class="border-2 border-forcos-secondary border-dashed rounded-lg p-4 text-center flex-1">
+                            <h4 class="font-bold text-forcos-secondary text-lg mb-1">Pôle Administratif</h4>
+                            <p class="text-sm">RH, Paie, Déclarations</p>
+                        </div>
+                        <div class="border-2 border-forcos-secondary border-dashed rounded-lg p-4 text-center flex-1">
+                            <h4 class="font-bold text-forcos-secondary text-lg mb-1">Support & Maintenance</h4>
+                            <p class="text-sm">Déploiement, Formation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl p-6 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-forcos-dark mb-4 text-center">Cycle de Vie d'un Projet</h2>
+                <p class="text-forcos-text mb-6 text-center max-w-3xl mx-auto">De la prise de contact à la maintenance, le processus de livraison suit un cycle structuré garantissant la qualité et la conformité du produit final.</p>
+                
+                <div class="flex flex-col md:flex-row flex-wrap items-center justify-center gap-2">
+                    <div class="flow-item bg-slate-50 border border-forcos-accent p-4 rounded-lg shadow text-center w-full md:w-auto md:flex-1">
+                        <span class="text-2xl font-bold text-forcos-accent">1.</span>
+                        <p class="font-semibold">Recueil du Besoin</p>
+                    </div>
+                    <div class="flow-item bg-slate-50 border border-forcos-accent p-4 rounded-lg shadow text-center w-full md:w-auto md:flex-1">
+                        <span class="text-2xl font-bold text-forcos-accent">2.</span>
+                        <p class="font-semibold">Étude & Spécification</p>
+                    </div>
+                    <div class="flow-item bg-slate-50 border border-forcos-accent p-4 rounded-lg shadow text-center w-full md:w-auto md:flex-1">
+                        <span class="text-2xl font-bold text-forcos-accent">3.</span>
+                        <p class="font-semibold">Conception</p>
+                    </div>
+                    <div class="flow-item bg-slate-50 border border-forcos-accent p-4 rounded-lg shadow text-center w-full md:w-auto md:flex-1">
+                        <span class="text-2xl font-bold text-forcos-accent">4.</span>
+                        <p class="font-semibold">Développement</p>
+                    </div>
+                    <div class="flow-item bg-slate-50 border border-forcos-accent p-4 rounded-lg shadow text-center w-full md:w-auto md:flex-1">
+                        <span class="text-2xl font-bold text-forcos-accent">5.</span>
+                        <p class="font-semibold">Tests & Recette</p>
+                    </div>
+                    <div class="flow-item bg-slate-50 border border-forcos-accent p-4 rounded-lg shadow text-center w-full md:w-auto md:flex-1">
+                        <span class="text-2xl font-bold text-forcos-accent">6.</span>
+                        <p class="font-semibold">Déploiement & Maintenance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl p-6 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-forcos-dark mb-2">Cadre Légal et Obligations</h2>
+                <p class="text-forcos-text mb-4">En tant que SARL marocaine, FORCOS est soumise à un ensemble d'obligations fiscales et sociales rigoureuses, gérées par son pôle administratif.</p>
+                <div class="chart-container" style="max-width: 800px; height: 300px;">
+                    <canvas id="obligationsChart"></canvas>
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="text-center mt-10 pt-6 border-t border-forcos-accent">
+            <p class="text-sm text-forcos-dark">Infographie générée basée sur le "Chapitre I: Découverte de l’entreprise".</p>
+            <p class="text-xs text-slate-500 mt-1">Ce document ne contient ni SVG ni Mermaid JS. Tous les graphiques sont rendus via Canvas (Chart.js) ou HTML/CSS.</p>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const chartColors = {
+                primary: '#00A6FB',
+                secondary: '#0582CA',
+                accent: '#006494',
+                dark: '#003554',
+                text: '#051923'
+            };
+
+            const polesCtx = document.getElementById('polesChart');
+            if (polesCtx) {
+                new Chart(polesCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            ['Conseil en', 'Organisation et RH'],
+                            ['Développement de', 'SI sur Mesure'],
+                            ['Ingénierie et', 'Actions de', 'Formation'],
+                            ['Études', 'Spécifiques']
+                        ],
+                        datasets: [{
+                            label: 'Pôles d\'Expertise',
+                            data: [25, 25, 25, 25],
+                            backgroundColor: [
+                                chartColors.primary,
+                                chartColors.secondary,
+                                chartColors.accent,
+                                chartColors.dark
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const techCtx = document.getElementById('techChart');
+            if (techCtx) {
+                new Chart(techCtx.getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: ['Python (Flask)', 'React', 'Electron', 'Méthodes Agiles', 'Git'],
+                        datasets: [{
+                            label: 'Focus Technologique',
+                            data: [5, 5, 4, 4, 5],
+                            backgroundColor: 'rgba(0, 166, 251, 0.2)',
+                            borderColor: chartColors.primary,
+                            pointBackgroundColor: chartColors.primary,
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: chartColors.primary
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    color: '#e2e8f0'
+                                },
+                                grid: {
+                                    color: '#e2e8f0'
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 13
+                                    },
+                                    color: chartColors.text
+                                },
+                                ticks: {
+                                    display: false,
+                                    stepSize: 1
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const obligationsCtx = document.getElementById('obligationsChart');
+            if (obligationsCtx) {
+                new Chart(obligationsCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Obligations Fiscales', 'Obligations Sociales'],
+                        datasets: [
+                            {
+                                label: 'Impôt sur les Sociétés (IS)',
+                                data: [1, 0],
+                                backgroundColor: chartColors.primary,
+                            },
+                            {
+                                label: 'TVA',
+                                data: [1, 0],
+                                backgroundColor: chartColors.secondary,
+                            },
+                            {
+                                label: 'Taxe Professionnelle',
+                                data: [1, 0],
+                                backgroundColor: chartColors.accent,
+                            },
+                            {
+                                label: 'CNSS',
+                                data: [0, 1],
+                                backgroundColor: chartColors.primary,
+                            },
+                            {
+                                label: 'AMO',
+                                data: [0, 1],
+                                backgroundColor: chartColors.secondary,
+                            },
+                            {
+                                label: 'CIMR (Retraite Compl.)',
+                                data: [0, 1],
+                                backgroundColor: chartColors.accent,
+                            }
+                        ]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                stacked: true,
+                                ticks: {
+                                    display: false
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            y: {
+                                stacked: true,
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 14,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
