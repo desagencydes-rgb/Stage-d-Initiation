@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme du Pôle Systèmes d'Information (SI)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc; /* light background */
+        }
+
+        /* Palette FORCOS - Bleu Vibrant */
+        .color-forcos-primary { color: #00A6FB; }
+        .bg-forcos-primary { background-color: #00A6FB; }
+        .bg-forcos-secondary { background-color: #0582CA; }
+        .border-forcos-primary { border-color: #00A6FB; }
+        .border-forcos-secondary { border-color: #0582CA; }
+
+        .si-box {
+            @apply p-4 rounded-lg shadow-lg text-center h-full flex flex-col justify-between transition transform hover:scale-[1.02] duration-300;
+        }
+
+        /* Styles pour les lignes de connexion simples (verticales) */
+        .line-vertical {
+            width: 4px;
+            background-color: #0582CA;
+            @apply my-4 mx-auto;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-10">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold color-forcos-secondary mb-2">
+                Pôle Systèmes d'Information (SI)
+            </h1>
+            <p class="text-lg text-gray-500">
+                Structure de l'offre de conseil et de solutions logicielles (SI) de FORCOS SARL.
+            </p>
+        </header>
+
+        <!-- Niveau 1: Le Pôle Central -->
+        <div class="flex justify-center">
+            <div class="si-box bg-forcos-secondary text-white w-full max-w-sm">
+                <h2 class="text-2xl font-bold">Systèmes d'Information (SI)</h2>
+                <p class="text-sm mt-1 opacity-90">Rendre les SI plus efficaces.</p>
+            </div>
+        </div>
+
+        <!-- Ligne de connexion vers les 4 domaines -->
+        <div class="line-vertical h-12"></div>
+
+        <!-- Niveau 2: Les 4 Domaines Majeurs (Grid/Flex pour le responsive) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- 1. Audit & Organisation de SI -->
+            <div class="flex flex-col items-center">
+                <div class="si-box bg-white border-b-4 border-forcos-primary text-gray-800">
+                    <h3 class="text-xl font-bold color-forcos-primary mb-2">1. Audit & Sécurité</h3>
+                    <ul class="text-sm list-none p-0 space-y-1 text-left mx-auto max-w-[200px]">
+                        <li><span class="text-forcos-primary font-semibold">&#x2713;</span> Audit (Matériel, Réseau, Applicatif)</li>
+                        <li><span class="text-forcos-primary font-semibold">&#x2713;</span> Audit de Flux & Données</li>
+                        <li><span class="text-forcos-primary font-semibold">&#x2713;</span> Sécurité Web & Messagerie</li>
+                        <li><span class="text-forcos-primary font-semibold">&#x2713;</span> Firewalls, Antivirus & VPN</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Infrastructures & Conseil -->
+            <div class="flex flex-col items-center">
+                <div class="si-box bg-white border-b-4 border-yellow-500 text-gray-800">
+                    <h3 class="text-xl font-bold text-yellow-600 mb-2">2. Infrastructures</h3>
+                    <ul class="text-sm list-none p-0 space-y-1 text-left mx-auto max-w-[200px]">
+                        <li><span class="text-yellow-600 font-semibold">&#x2713;</span> Conception & Modernisation</li>
+                        <li><span class="text-yellow-600 font-semibold">&#x2713;</span> Déploiement de Technologies</li>
+                        <li><span class="text-yellow-600 font-semibold">&#x2713;</span> Conseil & Maintenance</li>
+                        <li><span class="text-yellow-600 font-semibold">&#x2713;</span> Gestion des Équipements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. Solutions Standards (Logiciels Métier) -->
+            <div class="flex flex-col items-center">
+                <div class="si-box bg-white border-b-4 border-green-500 text-gray-800">
+                    <h3 class="text-xl font-bold text-green-600 mb-2">3. Solutions Standards</h3>
+                    <ul class="text-sm list-none p-0 space-y-1 text-left mx-auto max-w-[220px]">
+                        <li><span class="text-green-600 font-semibold">&#x2713;</span> Paie & RH (Télédéclarations CNSS)</li>
+                        <li><span class="text-green-600 font-semibold">&#x2713;</span> Comptabilité & Immobilisations</li>
+                        <li><span class="text-green-600 font-semibold">&#x2713;</span> Gestion Commerciale/Production</li>
+                        <li><span class="text-green-600 font-semibold">&#x2713;</span> Logiciels de Grands Éditeurs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. Solutions Sur-Mesure (Par Secteur) -->
+            <div class="flex flex-col items-center">
+                <div class="si-box bg-white border-b-4 border-red-500 text-gray-800">
+                    <h3 class="text-xl font-bold text-red-600 mb-2">4. Solutions Sur-Mesure</h3>
+                    <ul class="text-sm list-none p-0 space-y-1 text-left mx-auto max-w-[200px]">
+                        <li><span class="text-red-600 font-semibold">&#x2713;</span> BTP, Agroalimentaire</li>
+                        <li><span class="text-red-600 font-semibold">&#x2713;</span> Tourisme, Transport</li>
+                        <li><span class="text-red-600 font-semibold">&#x2713;</span> Pêche, Textile</li>
+                        <li><span class="text-red-600 font-semibold">&#x2713;</span> Conception et Réalisation</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-200">
+            <p class="text-xs text-gray-400">Diagramme basé sur la documentation de FORCOS SARL - Réalisé sans SVG ni Mermaid JS.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
